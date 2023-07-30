@@ -32,29 +32,8 @@
         ...
       }: let
         spkgs = starrpkgs.packages.${system};
-
-        customOverrides = self: super: {
-          # looks like this:
-          # uwuify = super.uwuify.overridePythonAttrs (
-          #   old: {
-          #     buildInputs = (old.buildInputs or []) ++ [super.poetry];
-          #   }
-          # );
-        };
-
         packageName = "exapy";
       in {
-        packages.${packageName} = pkgs.poetry2nix.mkPoetryApplication {
-          projectDir = ./.;
-          preferWheels = true;
-          overrides = [
-            pkgs.poetry2nix.defaultPoetryOverrides
-            customOverrides
-          ];
-        };
-
-        packages.default = self'.packages.${packageName};
-
         devShells.default = pkgs.mkShell {
           name = packageName;
           packages = with pkgs; [

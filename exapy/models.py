@@ -21,7 +21,8 @@ class Account(BaseModel):
     name: str
     email: str
     verified: bool
-    credits: int
+    # the api docs say this is a "number" but it's actually a float
+    credits: float
 
 
 class ServerPlayers(BaseModel):
@@ -55,7 +56,7 @@ class LogUpload(BaseModel):
     raw: str
 
 
-class FileInfo(BaseModel):
+class PathInfo(BaseModel):
     path: str
     name: str
     is_text_file: bool = Field(alias="isTextFile")
@@ -65,8 +66,7 @@ class FileInfo(BaseModel):
     is_readable: bool = Field(alias="isReadable")
     is_writable: bool = Field(alias="isWritable")
     size: int
-    # TODO: the type inside the array isn't specified in the api docs, so this is just a guess
-    children: Optional[list["FileInfo"]]
+    children: Optional[list["PathInfo"]]
 
 
 class ConfigOption(BaseModel):
@@ -77,18 +77,3 @@ class ConfigOption(BaseModel):
     type: str
     # options is used for select and multiselect types
     options: Optional[list[Union[str, int, float, bool]]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
