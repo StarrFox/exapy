@@ -9,6 +9,11 @@ repository = "https://github.com/StarrFox/exapy"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+aiohttp = "^3.8.5"
+pydantic = "^2.1.1"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
 
 [tool.commitizen]
 name = "cz_conventional_commits"

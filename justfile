@@ -25,6 +25,10 @@ update:
     nix flake update
     poetry update
 
+# run tests
+test:
+    poetry run pytest
+
 # format
 format:
     # TODO: treefmt?
