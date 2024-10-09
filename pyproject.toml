@@ -9,7 +9,7 @@ repository = "https://github.com/StarrFox/exapy"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-aiohttp = "^3.9.0"
+aiohttp = "^3.10.2"
 pydantic = "^2.1.1"
 
 [tool.poetry.group.test.dependencies]
